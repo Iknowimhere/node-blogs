@@ -4,6 +4,7 @@ import express from 'express'
 import db from './config/db.js'
 import authRoutes from './routes/auth.routes.js'
 import welcomeRoutes from './routes/welcome.route.js'
+import blogRoutes from './routes/blog.routes.js'
 db()
 let app=express()
 
@@ -18,6 +19,7 @@ app.use(express.static("./src/public"))
 
 app.use("/welcome",welcomeRoutes)
 app.use("/auth",authRoutes)
+app.use("/blogs",blogRoutes)
 
 
 export default app;

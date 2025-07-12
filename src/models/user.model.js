@@ -41,6 +41,11 @@ let userSchema = new mongoose.Schema(
         message: "password and confirm password do not match",
       },
     },
+    role:{
+      type:String,
+      enum:["user","auhtor"],
+      default:"user"
+    }
   },
   {
     timestamps: true,

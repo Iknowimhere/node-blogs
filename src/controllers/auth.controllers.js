@@ -49,4 +49,11 @@ const signin = async (req, res, next) => {
   }
 };
 
-export { signin, signup };
+const getSignin=(req,res,next)=>{
+  res.render("signin")
+}
+const getSignup=(req,res,next)=>{
+  res.render("signup")
+}
+
+export { signin, signup,getSignin,getSignup };

@@ -1,88 +1,166 @@
 body {
-    margin: 0;
-    padding: 0;
-    min-height: 100vh;
-    background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);
-    font-family: 'Inter', Arial, sans-serif;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);
+  font-family: "Poppins", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.welcome-container {
-    background: #fff;
-    padding: 2.5rem 2rem;
-    border-radius: 1.25rem;
-    box-shadow: 0 8px 32px rgba(60, 72, 100, 0.12);
-    text-align: center;
-    max-width: 400px;
-    width: 100%;
+.welcome-container,
+.auth-container {
+  background: #fff;
+  padding: 2.5rem 2rem;
+  border-radius: 1.25rem;
+  box-shadow: 0 8px 32px rgba(60, 72, 100, 0.12);
+  text-align: center;
+  max-width: 400px;
+  width: 100%;
 }
 
 .brand {
-    color: #6366f1;
-    font-weight: 700;
+  color: #6366f1;
+  font-weight: 700;
 }
 
 h1 {
-    font-size: 2.2rem;
-    margin-bottom: 0.5rem;
-    letter-spacing: -1px;
+  font-size: 2.2rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: -1px;
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 700;
+  color: #3730a3;
 }
 
 .subtitle {
-    color: #6b7280;
-    font-size: 1.05rem;
-    margin-bottom: 2rem;
+  color: #6b7280;
+  font-size: 1.05rem;
+  margin-bottom: 2rem;
 }
 
 .welcome-btns {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
 }
 
 .btn {
-    display: inline-block;
-    padding: 0.75rem 2rem;
-    border-radius: 2rem;
-    font-size: 1rem;
-    font-weight: 600;
-    text-decoration: none;
-    transition: background 0.2s, color 0.2s, box-shadow 0.2s;
-    box-shadow: 0 2px 8px rgba(99, 102, 241, 0.08);
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  border-radius: 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.08);
+  cursor: pointer;
+  border: none;
 }
 
 .btn-signup {
-    background: #6366f1;
-    color: #fff;
-    border: none;
+  background: #6366f1;
+  color: #fff;
 }
 
 .btn-signup:hover {
-    background: #4f46e5;
+  background: #4f46e5;
 }
 
 .btn-signin {
-    background: #f3f4f6;
-    color: #6366f1;
-    border: 1px solid #6366f1;
+  background: #f3f4f6;
+  color: #6366f1;
+  border: 1px solid #6366f1;
 }
 
 .btn-signin:hover {
-    background: #e0e7ff;
-    color: #3730a3;
+  background: #e0e7ff;
+  color: #3730a3;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.form-group label {
+  display: none;
+}
+
+.form-group input {
+  padding: 0.7rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.7rem;
+  font-size: 1rem;
+  background: #f9fafb;
+  transition: border 0.2s;
+  margin-bottom: 0.2rem;
+}
+
+.form-group input:focus {
+  border: 1.5px solid #6366f1;
+  outline: none;
+  background: #fff;
+}
+
+.form-error {
+  color: #ef4444;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.98rem;
+  text-align: center;
+}
+
+.auth-switch {
+  margin-top: 0.5rem;
+  color: #6b7280;
+  font-size: 0.98rem;
+}
+
+.auth-switch a {
+  color: #6366f1;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.auth-switch a:hover {
+  text-decoration: underline;
 }
 
 @media (max-width: 500px) {
-    .welcome-container {
-        padding: 1.5rem 0.5rem;
-    }
-    h1 {
-        font-size: 1.5rem;
-    }
-    .btn {
-        padding: 0.6rem 1.2rem;
-        font-size: 0.95rem;
-    }
+  .welcome-container,
+  .auth-container {
+    padding: 1.5rem 0.5rem;
+  }
+  h1 {
+    font-size: 1.5rem;
+  }
+  h2 {
+    font-size: 1.1rem;
+  }
+  .btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.95rem;
+  }
 }
