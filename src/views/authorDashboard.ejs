@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Author Dashboard | BlogSphere</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <main>
+        <nav class="dashboard-nav full-width">
+            <div class="dashboard-nav-inner">
+                <div class="logo brand">BlogSphere</div>
+                <div class="nav-btns">
+<a href="/blogs/create" class="btn btn-signup"><i class="fa-solid fa-plus"></i> Create a Blog</a>
+                    <span class="welcome-user"> Welcome Author</span>
+                </div>
+            </div>
+        </nav>
+        <section class="dashboard-content">
+            <h2>Your Blogs</h2>
+            <div class="blog-grid">
+                <% if (blogs && blogs.length> 0) { %>
+                    <% blogs.forEach(function(blog) { %>
+                        <div class="blog-card">
+                            <h3>
+                                <%= blog.title %>
+                            </h3>
+                            <% if (blog.image) { %>
+                                <img src="<%= blog.image %>" alt="Blog Image">
+                                <% } else { %>
+                                    <div class="blog-img-placeholder">No Image</div>
+                                    <% } %>
+                                        <div class="blog-actions">
+    <a href="/blogs/<%= blog._id %>" class="icon-btn icon-view" title="View"><i class="fa-solid fa-eye"></i></a>
+    <a href="/blogs/<%= blog._id %>/edit" class="icon-btn icon-edit" title="Edit"><i class="fa-solid fa-pen-to-square"></i></a>
+    <form action="/blogs/<%= blog._id %>?_method=DELETE" method="POST" style="display:inline;">
+        <button type="submit" class="icon-btn icon-delete" title="Delete"><i class="fa-solid fa-trash"></i></button>
+    </form>
+</div>
+                        </div>
+                        <% }) %>
+                            <% } else { %>
+                                <div class="no-blogs">You haven't created any blogs yet.</div>
+                                <% } %>
+            </div>
+        </section>
+    </main>
+</body>
+
+</html>

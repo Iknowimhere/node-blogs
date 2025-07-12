@@ -19,9 +19,6 @@
             <div class="form-group">
                 <input type="password" id="password" name="password" required placeholder="Password">
             </div>
-            <% if (typeof error !== 'undefined') { %>
-                <div class="form-error"><%= error %></div>
-            <% } %>
             <button type="submit" class="btn btn-signin w-100">Sign In</button>
         </form>
         <p class="auth-switch">Don't have an account? <a href="/auth/signup">Sign Up</a></p>

@@ -25,13 +25,11 @@ let blogSchema = new Schema({
     },
     image:{
         type:String,
-        required:true,
         default:"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKFSgdhQvBlZO6I8s-jtKIYOED1NqEs4xEjA&s"
     },
     authorId:{
         type:Schema.Types.ObjectId,
-        ref:"User",
-        requied:true
+        ref:"User"
     },
     commentId:[{type:Schema.Types.ObjectId,ref:"Comment"}]
   },

@@ -20,7 +20,8 @@ const signup = async (req, res, next) => {
     let token=await jwt.sign({id:newUser._id},process.env.JWT_SECRET,{
         expiresIn:'1d'
     })
-    res.status(201).json({ user:newUser,token});
+    res.cookie("token",token).status(200).redirect("/blogs")
+    // res.status(201).json({ user:newUser,token});
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
@@ -43,7 +44,8 @@ const signin = async (req, res, next) => {
     let token=await jwt.sign({id:existingUser._id},process.env.JWT_SECRET,{
         expiresIn:'1d'
     })
-    res.status(200).json({ user: existingUser,token});
+      res.cookie("token",token).status(200).redirect("/blogs")
+    // res.status(200).json({ user: existingUser,token});
   } catch (error) {
     res.status(400).json({ message: error.message });
   }
