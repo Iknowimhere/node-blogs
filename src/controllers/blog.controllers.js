@@ -5,7 +5,16 @@ const getBlogs=async(req,res,next)=>{
         console.log("on blogs",req.userId);
         
         let blogs=await Blog.find()
-        // res.status(200).json(blogs)
+        res.render("blogs",{blogs:blogs})
+    } catch (error) {
+        res.status(500).json({message:error.message})
+    }
+}
+
+const getBlogsForAuthor=async(req,res,next)=>{
+    try {
+        
+        let blogs=await Blog.find({authorId:req.userId})
         res.render("authorDashboard",{blogs:blogs})
     } catch (error) {
         res.status(500).json({message:error.message})
@@ -80,6 +89,6 @@ const getBlogFrom=(req,res,next)=>{
 
 
 export {
-    getBlogs,getBlog,postBlog,updateBlog,deleteBlog,getBlogFrom,getBlogForUpdate
+    getBlogs,getBlog,postBlog,updateBlog,deleteBlog,getBlogFrom,getBlogForUpdate,getBlogsForAuthor
 }
 

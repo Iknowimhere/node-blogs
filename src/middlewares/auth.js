@@ -19,7 +19,21 @@ const auth=async (req,res,next)=>{
         return; 
     }
     req.userId=user._id
+    req.role=user.role
+    req.username=user.username
     next()
 }
 
-export default auth;
+const verifyRole=(role)=>{
+    return (req, res, next) => {
+        if(req.role !== role){
+            res.status(403).json({
+                message:"Access denied"
+            })
+            return;
+        }
+        next();
+    }
+}
+
+export { auth, verifyRole };

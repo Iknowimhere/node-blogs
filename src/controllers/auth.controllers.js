@@ -3,7 +3,7 @@ import bcrypt from "bcryptjs";
 import jwt from 'jsonwebtoken'
 const signup = async (req, res, next) => {
   try {
-    let { username, email, password, confirmPassword } = req.body;
+    let { username, email, password, confirmPassword,role } = req.body;
     // check for existing user
     let existingUser = await User.findOne({ email });
     if (existingUser) {
@@ -16,11 +16,16 @@ const signup = async (req, res, next) => {
       email,
       password,
       confirmPassword,
+      role
     });
     let token=await jwt.sign({id:newUser._id},process.env.JWT_SECRET,{
         expiresIn:'1d'
     })
-    res.cookie("token",token).status(200).redirect("/blogs")
+    if(newUser.role==="author"){
+      return res.cookie("token",token).status(200).redirect("/blogs/author")
+    }else{
+      return res.cookie("token",token).status(200).redirect("/blogs")
+    }
     // res.status(201).json({ user:newUser,token});
   } catch (error) {
     res.status(400).json({ message: error.message });
@@ -44,7 +49,11 @@ const signin = async (req, res, next) => {
     let token=await jwt.sign({id:existingUser._id},process.env.JWT_SECRET,{
         expiresIn:'1d'
     })
-      res.cookie("token",token).status(200).redirect("/blogs")
+    if(existingUser.role==="author"){
+      return res.cookie("token",token).status(200).redirect("/blogs/author")
+    }else{
+      return res.cookie("token",token).status(200).redirect("/blogs")
+    }
     // res.status(200).json({ user: existingUser,token});
   } catch (error) {
     res.status(400).json({ message: error.message });

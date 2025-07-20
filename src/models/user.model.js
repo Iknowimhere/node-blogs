@@ -43,7 +43,7 @@ let userSchema = new mongoose.Schema(
     },
     role:{
       type:String,
-      enum:["user","auhtor"],
+      enum:["user","author"],
       default:"user"
     }
   },
