@@ -45,13 +45,17 @@ const getBlogForUpdate = async (req, res, next) => {
 };
 
 const postBlog = async (req, res, next) => {
-  console.log(req.userId);
+
 
   let { title, description } = req.body;
+  console.log(req.files);
+  console.log(req.file);
+  
   try {
     let newBlog = await Blog.create({
       title,
       description,
+      image:req.file.path,
       authorId: req.userId,
     });
     console.log('new blog created', newBlog);

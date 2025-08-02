@@ -10,13 +10,14 @@ import {
   updateBlog,
 } from '../controllers/blog.controllers.js';
 import { verifyRole, auth } from '../middlewares/auth.js';
+import upload from '../middlewares/fileUpload.js';
 
 let router = express.Router();
 
 router.get('/create', auth, verifyRole('author'), getBlogFrom);
 router.get('/', auth, verifyRole('user'), getBlogs); // /blogs
 router.get('/author', auth, verifyRole('author'), getBlogsForAuthor); // /blogs/author
-router.post('/create', auth, verifyRole('author'), postBlog); //blogs/create
+router.post('/create', auth, verifyRole('author'),upload.single("image"), postBlog); //blogs/create
 router.get('/:id', auth, getBlog);
 router.get('/:id/edit', auth, verifyRole('author'), getBlogForUpdate);
 router.put('/:id', auth, verifyRole('author'), updateBlog);
